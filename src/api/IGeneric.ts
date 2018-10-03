@@ -1,5 +1,5 @@
-import ICurrencyRates from '@/api/ICurrencyRates';
+import CurrencyRates from '@/api/CurrencyRates'
 
 export default interface IGeneric {
-    getCurrencyRates(): ICurrencyRates
+    getCurrencyRates(currency: String): Promise<CurrencyRates>
 }

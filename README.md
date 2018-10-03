@@ -3,7 +3,9 @@
 ## Project setup
 ```
 npm install
+cp src/api/config.example.ts src/api/config.ts 
 ```
+And provide the correct API key in config.ts
 
 ### Compiles and hot-reloads for development
 ```

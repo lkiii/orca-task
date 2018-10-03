@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img alt="Orca logo" src="https://orcaalliance.eu/build/assets/img/logo.svg">
-    <main />
+    <main-page />
   </div>
 </template>
 
@@ -11,7 +11,7 @@ import Main from "./pages/Main/index.vue";
 
 @Component({
   components: {
-    Main
+    "main-page": Main
   }
 })
 export default class App extends Vue {}

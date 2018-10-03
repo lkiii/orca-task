@@ -1,5 +1,5 @@
 <template>
     <div class="graph">
-        <GChart type="ColumnChart" :data="chartData" :options="chartOptions" />
+        <GChart type="LineChart" :data="chartData" :options="chartOptions" />
     </div>
 </template>
