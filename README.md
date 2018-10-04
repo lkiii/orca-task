@@ -1,5 +1,8 @@
 # orca
 
+## Description
+App gets current rates from coinapi.io and stores it to LocalStorage. Graph is drawn from data in localstorage.
+
 ## Project setup
 ```
 npm install
