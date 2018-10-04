@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Component from 'vue-class-component'
+import { Watch } from 'vue-property-decorator'
 import Graph from '@/components/Graph/index.vue'
 import CoinAPI from '@/api/CoinAPI'
 import CurrencyRates from '@/api/CurrencyRates';
@@ -12,6 +13,7 @@ import CurrencyRates from '@/api/CurrencyRates';
 export default class MainComponent extends Vue {
   name: String = 'main-page'
   api = new CoinAPI()
+  chartData: (number | Date | string)[][] = []
 
   private getHistory(currency: string): CurrencyRates[] {
     let rawHistory: string = localStorage.getItem(currency) || '[]'
@@ -31,7 +33,7 @@ export default class MainComponent extends Vue {
         history.push(data[i])
         localStorage.setItem(this.currencies[i].name, JSON.stringify(history))
       }
-      let a = that.chartData
+      this.prepareChartData()
     }).catch(Error => {
       console.error(Error)
     })
@@ -39,16 +41,22 @@ export default class MainComponent extends Vue {
 
   clearHistory() {
     localStorage.clear()
-    this.$forceUpdate()
+    this.prepareChartData()
   }
 
   get test() {
     return 'a'
   }
 
-  currencies = [{ name: 'BTC', checked: true }, { name: 'ETH', checked: true }]
-  // Array will be automatically processed with visualization.arrayToDataTable function
-  get chartData() {
+  currencies = [
+    { name: 'BTC', checked: true },
+    { name: 'ETH', checked: true },
+    { name: 'XRP', checked: true },
+    { name: 'BCH', checked: true },
+    { name: 'EOS', checked: true }
+  ]
+  @Watch('currencies', { immediate: true, deep: true })
+  prepareChartData() {
     let headers = ['Time']
     let data: (number | Date)[][] = []
     let first: boolean = true
@@ -65,9 +73,12 @@ export default class MainComponent extends Vue {
       }
       first = false
     }
-    return [
+    this.chartData = [
       headers,
       ...data
     ]
+  }
+  created() {
+    this.prepareChartData()
   }
 }
