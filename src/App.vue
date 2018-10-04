@@ -6,14 +6,14 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import Main from "./pages/Main/index.vue";
+import { Component, Vue } from 'vue-property-decorator'
+import Main from './pages/Main/index.vue'
 
 @Component({
   components: {
-    "main-page": Main
+  "main-page": Main
   }
-})
+  })
 export default class App extends Vue {}
 </script>
 

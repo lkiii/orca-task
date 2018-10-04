@@ -4,13 +4,13 @@ import { GChart } from 'vue-google-charts'
 
 @Component({
   components: {
-    GChart
+  GChart
   }
-})
+  })
 export default class GraphComponent extends Vue {
   name: String = 'graph'
   @Prop() chartData: any
-  data() {
+  data () {
     return {
       chartOptions: {
         chart: {
